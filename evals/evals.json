@@ -1,0 +1,26 @@
+{
+  "skill_name": "le-unslop",
+  "evals": [
+    {
+      "id": 1,
+      "name": "gite-rewrite",
+      "prompt": "Réécris ce texte pour la page d'accueil de notre gîte, il fait trop « écrit par une IA ». Garde toutes les infos pratiques.\n\nNiché au cœur du Luberon, à seulement 2 km de Gordes, notre gîte d'exception allie charme authentique et confort moderne pour vous offrir une expérience inoubliable. Que vous soyez en quête de détente ou d'aventure, nos 5 chambres raffinées sont une véritable invitation à l'évasion. Profitez de notre piscine chauffée (de mai à septembre) et d'un petit-déjeuner gourmand servi de 8h à 10h. Plus qu'un simple hébergement, c'est un art de vivre. Tarif : à partir de 95€ la nuit. N'attendez plus, réservez dès maintenant !",
+      "expected_output": "Une page d'accueil sobre, sans formules publicitaires, qui garde tous les faits (Gordes 2 km, 5 chambres, piscine mai-septembre, petit-déjeuner 8 h-10 h, 95 €) et corrige la typographie.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "landlord-email-translation",
+      "prompt": "Can you translate this into French? It's for my landlord in Lyon, Mrs. Girard, we're not close, keep it polite.\n\nDear Mrs. Girard,\n\nI hope this email finds you well. I'm writing to address the issue with the heating in my apartment (3rd floor, 12 rue Mercière). Since October 3rd, the radiators in the bedroom and living room have not been working, and the temperature drops to around 15°C at night. I realized the boiler shows an error code E04. Could you please send a technician by Friday, October 17? I'm available every day after 6pm.\n\nThank you in advance for your support. Please don't hesitate to contact me if you need any further information.\n\nBest regards,\nAndrei Petrov",
+      "expected_output": "Un courriel français naturel et poli : appel « Madame, », pas de calques (J'espère que vous allez bien, adresser, réaliser), formule finale qui reprend l'appel, typographie française.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "linkedin-funding-post",
+      "prompt": "Rédige un post LinkedIn en français pour annoncer notre levée de fonds. Infos : Kalo, logiciel de paie pour les PME, 3 millions d'euros levés auprès de Partech, 18 clients aujourd'hui, objectif 200 d'ici fin 2027, on recrute 12 personnes à Nantes (dev, sales, support). Je suis Claire, cofondatrice et CEO.",
+      "expected_output": "Un post LinkedIn crédible, sans voix de marque, faux contrastes, staccato ni émojis décoratifs, qui garde tous les faits sans en inventer.",
+      "files": []
+    }
+  ]
+}
