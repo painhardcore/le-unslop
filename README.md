@@ -71,15 +71,17 @@ The [recorded regression run](evals/results/2026-10-16.json) includes seven raw 
 
 ## What testing showed
 
-An earlier evaluation used three tasks: rewriting a gîte web page, translating an email to a landlord, and writing a LinkedIn funding post. A blind AI judge scored each output from 1 to 10, with one run per configuration. The model, settings, rubric, and raw responses were not saved in this repository, so these historical scores cannot be independently verified and do not validate the current revision.
+On 2026-10-16, we reran the three original tasks three times with and without `le-unslop`, producing 18 responses. A separate judge compared nine shuffled, unlabeled pairs using a predeclared rubric for factual fidelity, natural French, and France typography.
 
-| Task | With skill | Without skill |
-|---|---|---|
-| Gîte web page | 7 | 4 |
-| LinkedIn post | 8 | 3 |
-| Email to landlord | 7 | 8 to 9 |
+| Task | Facts in both conditions | Fidelity and naturalness only | Including typography |
+|---|---|---|---|
+| Gîte web page | All preserved; none invented | Skill preferred once; two ties | Skill preferred in all three pairs |
+| LinkedIn post | All preserved; none invented | Skill preferred once; two ties | Skill preferred in all three pairs |
+| Email to landlord | All preserved; none invented | Three ties | Skill preferred in all three pairs |
 
-The earlier evaluation reported invented facts in the baseline LinkedIn post and none in the outputs using the skill. One run per configuration is insufficient to establish a reliable improvement; the landlord email also scored lower with the skill.
+The clearest benefit was typography: the baseline outputs had 27 ordinary spaces where the rubric required non-breaking spaces; the skill outputs had none. Excluding typography, the skill scored better in two comparisons and tied in seven. Neither earlier report, invented LinkedIn facts or a worse landlord email with the skill, recurred in this setup.
+
+This remains a small test with one model judge. Both conditions shared the surrounding assistant instructions, each worker answered three tasks in one context, and the exact model identifier was unavailable. A concurrent edit also corrected two example spaces in the skill. It tests the current skill, not automatic discovery or the unrecorded historical configuration.
 
 ## Contents
 
