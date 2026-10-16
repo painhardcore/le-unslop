@@ -5,14 +5,14 @@
       "id": 1,
       "name": "gite-rewrite",
       "prompt": "Réécris ce texte pour la page d'accueil de notre gîte, il fait trop « écrit par une IA ». Garde toutes les infos pratiques.\n\nNiché au cœur du Luberon, à seulement 2 km de Gordes, notre gîte d'exception allie charme authentique et confort moderne pour vous offrir une expérience inoubliable. Que vous soyez en quête de détente ou d'aventure, nos 5 chambres raffinées sont une véritable invitation à l'évasion. Profitez de notre piscine chauffée (de mai à septembre) et d'un petit-déjeuner gourmand servi de 8h à 10h. Plus qu'un simple hébergement, c'est un art de vivre. Tarif : à partir de 95€ la nuit. N'attendez plus, réservez dès maintenant !",
-      "expected_output": "Une page d'accueil sobre, sans formules publicitaires, qui garde tous les faits (Gordes 2 km, 5 chambres, piscine mai-septembre, petit-déjeuner 8 h-10 h, 95 €) et corrige la typographie.",
+      "expected_output": "Une page d’accueil sobre qui conserve le Luberon, la distance de 2 km de Gordes, les 5 chambres, la piscine chauffée de mai à septembre, le petit-déjeuner de 8 h à 10 h et le tarif à partir de 95 € la nuit. La disponibilité saisonnière, le chauffage de la piscine et le prix minimum restent explicites. Aucun fait ajouté ; typographie française.",
       "files": []
     },
     {
       "id": 2,
       "name": "landlord-email-translation",
       "prompt": "Can you translate this into French? It's for my landlord in Lyon, Mrs. Girard, we're not close, keep it polite.\n\nDear Mrs. Girard,\n\nI hope this email finds you well. I'm writing to address the issue with the heating in my apartment (3rd floor, 12 rue Mercière). Since October 3rd, the radiators in the bedroom and living room have not been working, and the temperature drops to around 15°C at night. I realized the boiler shows an error code E04. Could you please send a technician by Friday, October 17? I'm available every day after 6pm.\n\nThank you in advance for your support. Please don't hesitate to contact me if you need any further information.\n\nBest regards,\nAndrei Petrov",
-      "expected_output": "Un courriel français naturel et poli : appel « Madame, », pas de calques (J'espère que vous allez bien, adresser, réaliser), formule finale qui reprend l'appel, typographie française.",
+      "expected_output": "Un courriel naturel et poli, avec un appel et une conclusion adaptés à la relation. Conserve le nom de Mme Girard, le 3e étage, l’adresse, les deux pièces, la panne depuis le 3 octobre, la température approximative de 15 °C la nuit, E04, la demande d’intervention pour le vendredi 17 octobre, la disponibilité quotidienne après 18 h et la signature. Ne résous pas l’année absente. Évite les calques dans leur contexte, sans imposer une formule longue ni supprimer une politesse utile.",
       "files": []
     },
     {
@@ -20,6 +20,55 @@
       "name": "linkedin-funding-post",
       "prompt": "Rédige un post LinkedIn en français pour annoncer notre levée de fonds. Infos : Kalo, logiciel de paie pour les PME, 3 millions d'euros levés auprès de Partech, 18 clients aujourd'hui, objectif 200 d'ici fin 2027, on recrute 12 personnes à Nantes (dev, sales, support). Je suis Claire, cofondatrice et CEO.",
       "expected_output": "Un post LinkedIn crédible, sans voix de marque, faux contrastes, staccato ni émojis décoratifs, qui garde tous les faits sans en inventer.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "already-good-prose",
+      "prompt": "Vérifie ce texte pour une brochure en français de France. S’il est déjà correct, renvoie-le tel quel, sans commentaire.\n\nLe gîte dispose de cinq chambres. La piscine est chauffée de mai à septembre. Le petit-déjeuner est servi de 8 h à 10 h. Les tarifs commencent à 95 € la nuit.",
+      "expected_output": "Le texte est rendu à l’identique, espaces insécables compris, sans préambule, ajout ni reformulation gratuite.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "technical-literals",
+      "prompt": "Corrige la typographie de la prose française de cette note. Conserve les éléments techniques et la citation mot pour mot. Rends la note seule.\n\nAttention! Le service répond: \"ok\".\nURL: https://example.com/v1/items?q=oui&limit=2\nCommande: `curl -H \"X-Mode: test\" https://example.com/v1/items?q=oui`\nJSON: `{\"message\":\"Bonjour!\",\"ready\":true}`\nIdentifiant: job:42\nCitation verbatim: \"Pourquoi?\"\n\n```sh\nprintf \"%s!\" \"$USER\"\n```",
+      "expected_output": "Les espaces manquantes dans la prose sont corrigées. Les guillemets de \"ok\" peuvent devenir français. L’URL, la commande entre backticks, le JSON, job:42, la citation \"Pourquoi?\" et le bloc shell restent strictement identiques. Aucun préambule ni changement syntaxique dans les éléments protégés.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "requested-warm-tone",
+      "prompt": "Allège ce courriel sans le rendre sec. Garde exactement ma première phrase et ma formule finale, notre relation est chaleureuse.\n\nJ’espère que vous allez bien. Je me permets de vous écrire afin de vous demander si vous pourriez me confirmer notre rendez-vous de mardi à 14 h.\n\nBien chaleureusement,\nLucie",
+      "expected_output": "La première phrase et la formule finale avec signature restent identiques. Le rendez-vous demeure mardi à 14 h. Le corps peut être allégé tout en restant chaleureux et poli ; aucune formule administrative longue ni fait ajouté.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "name": "cover-letter-without-numbers",
+      "prompt": "Rédige un court paragraphe pour ma lettre de motivation, uniquement avec ces faits : je suis développeuse Go, j’ai conçu un outil interne de suivi des incidents et je postule à un poste backend chez Orme. Je n’ai pas de mesure chiffrée de son impact. N’en demande pas et ne mets pas de placeholder.",
+      "expected_output": "Un paragraphe utilisable qui cite le poste backend chez Orme, Go et l’outil interne de suivi des incidents. Aucun chiffre inventé, résultat commercial attribué à Orme, demande de données ni placeholder. Ne pas convertir une absence de mesure en absence de réalisation.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "name": "review-without-rewrite",
+      "prompt": "Analyse ce texte en français. Donne deux remarques précises sur le style. Ne propose pas de réécriture.\n\nDans un monde en constante évolution, notre solution innovante accompagne les entreprises vers un avenir meilleur.",
+      "expected_output": "Deux remarques précises sur le texte fourni, par exemple le décor générique et les promesses sans fait concret. Pas de texte de remplacement, de réécriture complète ni de fait inventé.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "name": "requested-regional-convention",
+      "prompt": "Corrige uniquement les fautes de ce message pour un public québécois. Garde les conventions demandées : aucune espace avant ! et ? ; conserve le mot courriel. Rends le message seul.\n\nBonjour! Avez-vous reçu mon courriel? Merci!",
+      "expected_output": "Le message est rendu inchangé. Les conventions explicites priment sur les espaces françaises de France ; courriel est conservé. Aucun commentaire ni adaptation régionale non demandée.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "name": "missing-punctuation-spaces",
+      "prompt": "Corrige uniquement la typographie de cette phrase en français de France et rends la phrase seule.\n\nElle dit: «Bonjour!» Puis elle demande: pourquoi ?",
+      "expected_output": "Les deux deux-points, le point d’exclamation, le point d’interrogation et l’intérieur des guillemets reçoivent des espaces insécables U+00A0 ou U+202F. Les espaces ordinaires fautives sont aussi corrigées. Les mots et leur ordre restent identiques.",
       "files": []
     }
   ]

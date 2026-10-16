@@ -1,0 +1,89 @@
+{
+  "recorded_at_utc": "2026-10-16T10:51:50.496660+00:00",
+  "base_commit": "6dadbe6f5ab5b27d6660dd148508a5d64b02ed04",
+  "runtime_file_sha256": {
+    "SKILL.md": "14f9027613b6a01f527d0ca99ed6a36ecbeeef095f0c866e3fa536d3885804fe",
+    "references/typographie.md": "6e11abf951bd6feed66ceba9474aa9764e379e02d4cd39fac1a3463431530764",
+    "scripts/check_spacing.py": "ecab65c42a12191a741ba16688d47c1d900017ab0fc888d7c9421e1041c8e429"
+  },
+  "evals_sha256": "7ee7c33c5fc0cd68b442d2a31cca441aa621ae03bc31af3ad83ac90d0b81691b",
+  "method": "One independent evaluator received only the revised skill, supporting references, and seven raw requests. Expected outputs and prior review conclusions were withheld. The parent reviewed the responses against the criteria and checked exact preservation and punctuation programmatically.",
+  "model": "Inherited session model; exact model identifier and inference settings were not exposed.",
+  "limitations": [
+    "Seven requests were evaluated in one isolated evaluator context, not seven separate sessions.",
+    "One response per case; no baseline comparison, independent judge, or automatic discovery test.",
+    "Only cases 4 through 10 were run in this forward-test."
+  ],
+  "results": [
+    {
+      "id": 4,
+      "name": "already-good-prose",
+      "prompt": "Vérifie ce texte pour une brochure en français de France. S’il est déjà correct, renvoie-le tel quel, sans commentaire.\n\nLe gîte dispose de cinq chambres. La piscine est chauffée de mai à septembre. Le petit-déjeuner est servi de 8 h à 10 h. Les tarifs commencent à 95 € la nuit.",
+      "expected_output": "Le texte est rendu à l’identique, espaces insécables compris, sans préambule, ajout ni reformulation gratuite.",
+      "files": [],
+      "response": "Le gîte dispose de cinq chambres. La piscine est chauffée de mai à septembre. Le petit-déjeuner est servi de 8 h à 10 h. Les tarifs commencent à 95 € la nuit.",
+      "assessment": "pass",
+      "assessment_notes": "Exact match, including non-breaking spaces; no preamble or gratuitous rewrite."
+    },
+    {
+      "id": 5,
+      "name": "technical-literals",
+      "prompt": "Corrige la typographie de la prose française de cette note. Conserve les éléments techniques et la citation mot pour mot. Rends la note seule.\n\nAttention! Le service répond: \"ok\".\nURL: https://example.com/v1/items?q=oui&limit=2\nCommande: `curl -H \"X-Mode: test\" https://example.com/v1/items?q=oui`\nJSON: `{\"message\":\"Bonjour!\",\"ready\":true}`\nIdentifiant: job:42\nCitation verbatim: \"Pourquoi?\"\n\n```sh\nprintf \"%s!\" \"$USER\"\n```",
+      "expected_output": "Les espaces manquantes dans la prose sont corrigées. Les guillemets de \"ok\" peuvent devenir français. L’URL, la commande entre backticks, le JSON, job:42, la citation \"Pourquoi?\" et le bloc shell restent strictement identiques. Aucun préambule ni changement syntaxique dans les éléments protégés.",
+      "files": [],
+      "response": "Attention ! Le service répond : « ok ».\nURL : https://example.com/v1/items?q=oui&limit=2\nCommande : `curl -H \"X-Mode: test\" https://example.com/v1/items?q=oui`\nJSON : `{\"message\":\"Bonjour!\",\"ready\":true}`\nIdentifiant : job:42\nCitation verbatim : \"Pourquoi?\"\n\n```sh\nprintf \"%s!\" \"$USER\"\n```",
+      "assessment": "pass",
+      "assessment_notes": "All six protected literals are unchanged. Surrounding prose has correct non-breaking spaces."
+    },
+    {
+      "id": 6,
+      "name": "requested-warm-tone",
+      "prompt": "Allège ce courriel sans le rendre sec. Garde exactement ma première phrase et ma formule finale, notre relation est chaleureuse.\n\nJ’espère que vous allez bien. Je me permets de vous écrire afin de vous demander si vous pourriez me confirmer notre rendez-vous de mardi à 14 h.\n\nBien chaleureusement,\nLucie",
+      "expected_output": "La première phrase et la formule finale avec signature restent identiques. Le rendez-vous demeure mardi à 14 h. Le corps peut être allégé tout en restant chaleureux et poli ; aucune formule administrative longue ni fait ajouté.",
+      "files": [],
+      "response": "J’espère que vous allez bien. Pourriez-vous me confirmer notre rendez-vous de mardi à 14 h ?\n\nBien chaleureusement,\nLucie",
+      "assessment": "pass",
+      "assessment_notes": "Requested opening and closing are unchanged. The meeting remains Tuesday at 14 h; tone stays polite."
+    },
+    {
+      "id": 7,
+      "name": "cover-letter-without-numbers",
+      "prompt": "Rédige un court paragraphe pour ma lettre de motivation, uniquement avec ces faits : je suis développeuse Go, j’ai conçu un outil interne de suivi des incidents et je postule à un poste backend chez Orme. Je n’ai pas de mesure chiffrée de son impact. N’en demande pas et ne mets pas de placeholder.",
+      "expected_output": "Un paragraphe utilisable qui cite le poste backend chez Orme, Go et l’outil interne de suivi des incidents. Aucun chiffre inventé, résultat commercial attribué à Orme, demande de données ni placeholder. Ne pas convertir une absence de mesure en absence de réalisation.",
+      "files": [],
+      "response": "Développeuse Go, j’ai conçu un outil interne de suivi des incidents et je souhaite rejoindre Orme à un poste backend.",
+      "assessment": "pass",
+      "assessment_notes": "Uses only supplied facts; no invented impact, numbers, placeholders, or follow-up question."
+    },
+    {
+      "id": 8,
+      "name": "review-without-rewrite",
+      "prompt": "Analyse ce texte en français. Donne deux remarques précises sur le style. Ne propose pas de réécriture.\n\nDans un monde en constante évolution, notre solution innovante accompagne les entreprises vers un avenir meilleur.",
+      "expected_output": "Deux remarques précises sur le texte fourni, par exemple le décor générique et les promesses sans fait concret. Pas de texte de remplacement, de réécriture complète ni de fait inventé.",
+      "files": [],
+      "response": "- L’ouverture « Dans un monde en constante évolution » pose un décor général sans préciser quel changement concerne les entreprises visées. Elle retarde le propos.\n- « Solution innovante » et « avenir meilleur » sont des formules promotionnelles vagues : elles ne disent ni ce que fait le produit ni ce qu’il apporte aux entreprises.",
+      "assessment": "pass",
+      "assessment_notes": "Two specific style observations about the supplied text, with no replacement prose."
+    },
+    {
+      "id": 9,
+      "name": "requested-regional-convention",
+      "prompt": "Corrige uniquement les fautes de ce message pour un public québécois. Garde les conventions demandées : aucune espace avant ! et ? ; conserve le mot courriel. Rends le message seul.\n\nBonjour! Avez-vous reçu mon courriel? Merci!",
+      "expected_output": "Le message est rendu inchangé. Les conventions explicites priment sur les espaces françaises de France ; courriel est conservé. Aucun commentaire ni adaptation régionale non demandée.",
+      "files": [],
+      "response": "Bonjour! Avez-vous reçu mon courriel? Merci!",
+      "assessment": "pass",
+      "assessment_notes": "Exact match; explicit regional punctuation and courriel preserved."
+    },
+    {
+      "id": 10,
+      "name": "missing-punctuation-spaces",
+      "prompt": "Corrige uniquement la typographie de cette phrase en français de France et rends la phrase seule.\n\nElle dit: «Bonjour!» Puis elle demande: pourquoi ?",
+      "expected_output": "Les deux deux-points, le point d’exclamation, le point d’interrogation et l’intérieur des guillemets reçoivent des espaces insécables U+00A0 ou U+202F. Les espaces ordinaires fautives sont aussi corrigées. Les mots et leur ordre restent identiques.",
+      "files": [],
+      "response": "Elle dit : « Bonjour ! » Puis elle demande : pourquoi ?",
+      "assessment": "pass",
+      "assessment_notes": "Correct non-breaking spaces throughout; words, order, and punctuation preserved."
+    }
+  ]
+}

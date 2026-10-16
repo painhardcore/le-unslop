@@ -37,7 +37,7 @@ The repo is the skill: `SKILL.md` sits at the root. Clone it into a skill direct
 | Agent | Project | User-wide |
 |---|---|---|
 | Claude Code | `.claude/skills/le-unslop` | `~/.claude/skills/le-unslop` |
-| Codex | `.agents/skills/le-unslop` | see the Codex documentation |
+| Codex | `.agents/skills/le-unslop` | `~/.agents/skills/le-unslop` |
 | OpenCode | `.opencode/skills/le-unslop` | `~/.config/opencode/skills/le-unslop` |
 
 ```sh
@@ -46,9 +46,32 @@ git clone https://github.com/painhardcore/le-unslop ~/.claude/skills/le-unslop
 
 Update with `git -C ~/.claude/skills/le-unslop pull`. The skill triggers on any French writing task and has no dependencies.
 
+For Codex, install user-wide with:
+
+```sh
+mkdir -p ~/.agents/skills
+git clone https://github.com/painhardcore/le-unslop ~/.agents/skills/le-unslop
+```
+
+Update with `git -C ~/.agents/skills/le-unslop pull`. Check `/skills` and invoke `$le-unslop`. Codex detects changes automatically; restart it if the skill does not appear. See the [official Codex skill discovery documentation](https://learn.chatgpt.com/docs/build-skills).
+
+## Test
+
+Run the spacing checker's regression tests with Python 3:
+
+```sh
+python3 -m unittest discover -s evals -p 'test_*.py' -v
+```
+
+The optional checker accepts UTF-8 files containing plain France French prose. It reports incorrect spaces without modifying the file. Exclude technical literals, verbatim quotations, and numeric times such as `13:52` before using it. It does not parse Markdown or validate writing style.
+
+`evals/evals.json` contains writing tasks and behavioral regression cases for preserving facts, technical literals, tone, regional conventions, and review output. Evaluate each prompt in a fresh conversation with the skill loaded, without showing the model `expected_output`. Compare the response against those criteria. Save the raw responses, model, settings, skill revision, and judging criteria alongside any reported results. These behavioral cases are separate from the automated spacing tests.
+
+The [recorded regression run](evals/results/2026-10-16.json) includes seven raw responses, criteria, assessments, and file hashes. All seven passed review. It used one independent evaluator context and one response per case, without a baseline comparison or a test of automatic skill discovery. The exact model identifier was unavailable.
+
 ## What testing showed
 
-`evals/evals.json` holds three tasks: rewriting a gîte web page, translating an email to a landlord, and writing a LinkedIn funding post. A blind AI judge scored each output from 1 to 10, with one run per configuration.
+An earlier evaluation used three tasks: rewriting a gîte web page, translating an email to a landlord, and writing a LinkedIn funding post. A blind AI judge scored each output from 1 to 10, with one run per configuration. The model, settings, rubric, and raw responses were not saved in this repository, so these historical scores cannot be independently verified and do not validate the current revision.
 
 | Task | With skill | Without skill |
 |---|---|---|
@@ -56,7 +79,7 @@ Update with `git -C ~/.claude/skills/le-unslop pull`. The skill triggers on any 
 | LinkedIn post | 8 | 3 |
 | Email to landlord | 7 | 8 to 9 |
 
-Without the skill, the LinkedIn post invented facts. With the skill, no output invented anything. For formal letters, the base model already writes well and the skill adds little beyond typography. One run per configuration means gaps of one or two points may be noise.
+The earlier evaluation reported invented facts in the baseline LinkedIn post and none in the outputs using the skill. One run per configuration is insufficient to establish a reliable improvement; the landlord email also scored lower with the skill.
 
 ## Contents
 

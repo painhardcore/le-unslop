@@ -1,6 +1,6 @@
 # Typographie française
 
-Usage de France. Une seule convention par texte : ne mélange ni guillemets français et droits, ni deux sortes de tirets, ni apostrophe droite et courbe.
+Usage de France par défaut ; suis la variante ou la convention demandée. Ces règles concernent la prose, pas le code, les commandes, les URL, les identifiants, les données structurées ni les citations verbatim. Dans la prose, garde une convention cohérente pour chaque usage.
 
 ## Espaces
 
@@ -40,6 +40,6 @@ Guillemets dans une citation : `« Il a dit “non” puis il est parti. »`.
 
 - Ligatures : cœur, sœur, œuvre, œuf, bœuf, nœud, vœu. Sans ligature : coexister, coefficient, moelle.
 - « etc. » après au moins deux éléments, jamais suivi de `…`.
-- Pas de virgule avant le « et » final.
+- Évite la virgule systématique avant le « et » final ; garde-la si elle clarifie la phrase.
 - Tirets : trait d'union pour les mots composés, demi-cadratin pour les intervalles (1914–1918), cadratin pour le dialogue.
 - Apostrophe droite `'` en texte brut, code et courriel. Apostrophe courbe `’` en édition. Pas de mélange.
