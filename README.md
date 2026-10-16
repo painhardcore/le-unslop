@@ -1,14 +1,34 @@
 # le-unslop
 
+Make AI-written French read like a French person wrote it.
+
 `le-unslop` is an agent skill that removes AI tells from French text and applies French (France) typography. It covers rewrites, translations into French, emails, letters, marketing copy and social posts.
 
-The skill works on three causes rather than a word list:
+## Before and after
 
-- Sentences with no concrete fact behind them.
-- Symmetry: forced contrasts, triplets, conclusions that repeat the introduction.
-- English translated into French: calques, English typography, translated email formulas.
+A gîte web page from the test set:
 
-It also enforces non-breaking spaces before `: ; ! ?` and inside `« »`, French number formats, and French letter conventions.
+> Niché au cœur du Luberon, à seulement 2 km de Gordes, notre gîte d'exception allie charme authentique et confort moderne pour vous offrir une expérience inoubliable. Que vous soyez en quête de détente ou d'aventure, nos 5 chambres raffinées sont une véritable invitation à l'évasion. Profitez de notre piscine chauffée (de mai à septembre) et d'un petit-déjeuner gourmand servi de 8h à 10h. Plus qu'un simple hébergement, c'est un art de vivre. Tarif : à partir de 95€ la nuit. N'attendez plus, réservez dès maintenant !
+
+The same page rewritten with the skill, unedited test output:
+
+> Notre gîte se trouve dans le Luberon, à 2 km de Gordes, et compte cinq chambres. La piscine est chauffée de mai à septembre. Le petit-déjeuner est servi de 8 h à 10 h.
+>
+> La nuit est à partir de 95 €.
+>
+> Réservation : [à préciser : téléphone, adresse e-mail ou lien de réservation]
+
+The puffery is gone, every practical fact survives, and the typography follows French rules (`8 h`, `95 €`, a non-breaking space before `:`). Where a fact is missing, the skill leaves a placeholder instead of inventing one.
+
+## What it fixes
+
+The skill works on three causes rather than a word list, because lists of AI words go stale:
+
+- **No referent.** Sentences with no concrete fact behind them. The skill puts the fact in or cuts the sentence.
+- **Symmetry.** Forced contrasts ("Ce n'est pas X, c'est Y"), triplets, conclusions that repeat the introduction.
+- **English translated into French.** Calques ("adresser un problème", "J'espère que vous allez bien"), English typography, translated email formulas.
+
+It also enforces non-breaking spaces before `: ; ! ?` and inside `« »`, French number formats, and French letter conventions. In letters it keeps the expected formulas and cuts the stacked extras.
 
 ## Install
 
@@ -38,6 +58,19 @@ Update with `git -C ~/.claude/skills/le-unslop pull`. The skill triggers on any 
 
 Without the skill, the LinkedIn post invented facts. With the skill, no output invented anything. For formal letters, the base model already writes well and the skill adds little beyond typography. One run per configuration means gaps of one or two points may be noise.
 
+## Contents
+
+```text
+SKILL.md                   the skill
+references/typographie.md  French typography details
+references/sources.md      research sources and limits
+evals/evals.json           test tasks
+```
+
 ## Sources
 
 See `references/sources.md`. No French corpus study of AI writing was found. The patterns come from French writing guides and blogs that agree with each other.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
